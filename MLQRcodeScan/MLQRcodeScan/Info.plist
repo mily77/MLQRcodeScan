@@ -27,7 +27,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>请允许</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>请允许</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

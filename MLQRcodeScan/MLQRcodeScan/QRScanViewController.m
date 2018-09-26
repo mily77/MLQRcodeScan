@@ -342,7 +342,18 @@
     {
         //停止扫描
         [_session stopRunning];
+        [[self.previewLayer connection] setEnabled:NO];
         [timer setFireDate:[NSDate distantFuture]];
+        [_line removeFromSuperview];
+        _line = nil;
+        double delayInSeconds = 2.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,
+                                                (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [[self.previewLayer connection] setEnabled:YES];
+            [_session startRunning];
+            
+        });
         
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         stringValue = metadataObject.stringValue;
